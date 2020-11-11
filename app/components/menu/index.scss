@@ -1,0 +1,159 @@
+.countdown,
+.game-over,
+.menu {
+  bottom: var(--board-tile-size, 16px);
+  left: var(--board-tile-size, 16px);
+  position: fixed;
+  right: var(--board-tile-size, 16px);
+  top: var(--board-tile-size, 16px);
+}
+
+.game-over,
+.countdown {
+  display: grid;
+  grid-template-columns: 33% [message] 33% 33%;
+  grid-template-rows: 33% [message] 33% 33%;
+  place-items: center;
+
+  &__message {
+    background-color: var(--background-color);
+    color: white;
+    font-size: 3rem;
+    grid-column: message;
+    grid-row: message;
+    padding: 50px;
+    margin: 0;
+  }
+}
+
+.countdown {
+  &__message {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 1s ease calc(var(--countdown-index, 0) * 999ms),
+      transform 1s ease calc(var(--countdown-index, 0) * 999ms);
+  }
+
+  &--start & {
+    &__message {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &--done {
+    opacity: 0;
+  }
+}
+
+.game-over {
+  opacity: 0;
+  transform: scale(2);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+
+  &__cta {
+    color: var(--foreground-color);
+    grid-row: message;
+    grid-column: message;
+    transform: translateY(300%);
+  }
+}
+
+.menu {
+  background-color: #2e255a;
+  display: flex;
+  transition: transform 0.2s ease-in-out, opacity 0.3s ease;
+
+  &__form {
+    display: grid;
+    flex: 0 1 100%;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: [menu-title] auto 16px [levels-menu] auto 16px [size-menu] auto 16px [food-menu] auto 16px [play-menu] auto;
+    margin: 0;
+    place-items: center;
+    padding: 10% 0 10%;
+  }
+
+  &__title {
+    color: white;
+    font-size: 2rem;
+    grid-column: 1 / -1;
+    grid-row: menu-title;
+    margin: 0;
+  }
+
+  &__field-group {
+    display: flex;
+    flex-wrap: wrap;
+    grid-column: 1 / -1;
+    justify-content: center;
+    width: clamp(500px, 75%, 600px);
+
+    &--levels {
+      grid-row: levels-menu;
+    }
+
+    &--size {
+      grid-row: size-menu;
+    }
+
+    &--food {
+      grid-row: food-menu;
+    }
+  }
+
+  &__field-group-title {
+    color: rgba(255, 255, 255, 0.7);
+    flex: 0 1 100%;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  &__button {
+    grid-row: play-menu;
+    grid-column: 1 / -1;
+  }
+
+  &__button,
+  &__level,
+  &__size {
+    background-color: var(--foreground-color);
+    border: none;
+    box-shadow: 8px 8px 0 0 rgba(0, 0, 0, 0.3);
+    color: var(--light-foreground-color, #fff);
+    cursor: pointer;
+    margin: 0 8px;
+    font-size: 1rem;
+    padding: 16px 32px;
+    text-transform: uppercase;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  &__food {
+    background-color: var(--foreground-color);
+    border: none;
+    color: var(--light-foreground-color, #fff);
+    font-size: 1rem;
+    padding: 16px;
+    text-align: center;
+  }
+
+  &__level-radio,
+  &__size-radio {
+    display: none;
+  }
+
+  &__level-radio:hover + &__level,
+  &__size-radio:hover + &__size,
+  &__button:hover {
+    box-shadow: 10px 10px 0 0 rgba(0, 0, 0, 0.2);
+    transform: translate(-2px, -2px);
+  }
+
+  &__level-radio:checked + &__level,
+  &__size-radio:checked + &__size,
+  &__button:active {
+    box-shadow: none;
+    transform: translate(8px, 8px);
+  }
+}

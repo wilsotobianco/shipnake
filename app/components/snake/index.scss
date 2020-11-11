@@ -1,0 +1,46 @@
+.snake {
+  animation: fade-out calc(var(--board-level) * (var(--board-score) + 1) * 4ms)
+    ease-in-out infinite;
+  background-color: white;
+  // border-radius: 50%;
+  grid-row: var(--snake-y-position, 1);
+  grid-column: var(--snake-x-position, 1);
+
+  &--head {
+    animation: none;
+    background-color: transparent;
+
+    .game--up & {
+      border-left: var(--board-snake-head-size, 16px) solid transparent;
+      border-right: var(--board-snake-head-size, 16px) solid transparent;
+      border-bottom: calc(var(--board-snake-head-size, 16px) * 2) solid white;
+    }
+    .game--right & {
+      border-top: var(--board-snake-head-size, 16px) solid transparent;
+      border-bottom: var(--board-snake-head-size, 16px) solid transparent;
+      border-left: calc(var(--board-snake-head-size, 16px) * 2) solid white;
+    }
+    .game--down & {
+      border-left: var(--board-snake-head-size, 16px) solid transparent;
+      border-right: var(--board-snake-head-size, 16px) solid transparent;
+      border-top: calc(var(--board-snake-head-size, 16px) * 2) solid white;
+    }
+    .game--left & {
+      border-top: var(--board-snake-head-size, 16px) solid transparent;
+      border-bottom: var(--board-snake-head-size, 16px) solid transparent;
+      border-right: calc(var(--board-snake-head-size, 16px) * 2) solid white;
+    }
+  }
+
+  &--tail {
+    animation: none;
+    background-color: rgb(90, 0, 0);
+    opacity: 1;
+    transform: scale(0.4);
+  }
+
+  .game--over & {
+    border: none;
+    animation: fade-out 1s ease-in-out infinite;
+  }
+}

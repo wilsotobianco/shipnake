@@ -1,0 +1,119 @@
+$main-color: #0c0a0d;
+$secondary-color: #4b48c1;
+$tertiary-color: white;
+$highlight-color: #f140c0;
+
+:root {
+  --background-color: #{$main-color};
+  --foreground-color: #{$secondary-color};
+  --light-foreground-color: #{$tertiary-color};
+  --alert-color: #{$highlight-color};
+  --board-column-dimension: 0;
+  --board-row-dimension: 0;
+  --board-tile-size: 16px;
+  --board-score: 0;
+  --board-snake-head-size: calc(var(--board-tile-size) / 2);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Orbitron', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  opacity: 1;
+  transform: scale(1);
+}
+
+html,
+body {
+  background-color: var(--background-color, #000);
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100vw;
+}
+
+body {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.game {
+  &--loaded .menu {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  &--loaded .board {
+    flex-grow: unset;
+    margin: auto;
+  }
+
+  &--is-playing .menu {
+    display: none;
+  }
+
+  &--up .board__background-star {
+    transform: translateY(20vw) scale(var(--star-scale, 1));
+  }
+
+  &--right .board__background-star {
+    transform: translateX(-20vw) scale(var(--star-scale, 1));
+  }
+
+  &--down .board__background-star {
+    transform: translateY(-20vw) scale(var(--star-scale, 1));
+  }
+
+  &--left .board__background-star {
+    transform: translateX(20vw) scale(var(--star-scale, 1));
+  }
+
+  &--over .game-over {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    background-color: rgb(252, 242, 134);
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  10% {
+    background-color: yellow;
+  }
+
+  25% {
+    background-color: red;
+  }
+
+  50% {
+    background-color: rgb(100, 0, 0);
+    opacity: 1;
+    transform: scale(0.5);
+  }
+
+  100% {
+    background-color: rgb(90, 0, 0);
+    opacity: 1;
+    transform: scale(0.4);
+  }
+}
+
+// @keyframes space-travel {
+//   from {
+//     transform: translateX(0) translateZ(0);
+//   }
+
+//   to {
+//     transform: translateX(100vw) translateZ(0);
+//   }
+// }

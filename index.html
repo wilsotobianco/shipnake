@@ -1,0 +1,116 @@
+<html class="game">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        opacity: 0;
+        transform: scale(0.9);
+        transition: opacity 0.3s ease 1s, transform 0.2s ease 1s;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="board">
+      <div class="board__score">
+        <h3 class="board__star-score"></h3>
+        <h3 class="board__configuration"></h3>
+      </div>
+      <div class="board__background">
+        <div class="board__background-star"></div>
+        <div class="board__background-star"></div>
+        <div class="board__background-star"></div>
+      </div>
+    </main>
+    <aside class="countdown">
+      <h3 class="countdown__message" style="--countdown-index: 0">3</h3>
+      <h3 class="countdown__message" style="--countdown-index: 1">2</h3>
+      <h3 class="countdown__message" style="--countdown-index: 2">1</h3>
+      <h3 class="countdown__message" style="--countdown-index: 3">Go!</h3>
+    </aside>
+    <aside class="game-over">
+      <h3 class="game-over__message">You've lost</h3>
+      <a href="./" onclick="" class="game-over__cta">Retry</a>
+    </aside>
+    <aside class="menu">
+      <form class="menu__form" name="menu">
+        <h1 class="menu__title">Shipnake 🚀</h1>
+        <div class="menu__field-group menu__field-group--levels">
+          <h2 class="menu__field-group-title">Speed</h2>
+          <input
+            type="radio"
+            class="menu__level-radio"
+            id="easy-level"
+            name="level"
+            value="1"
+          />
+          <label for="easy-level" class="menu__level">Slow</label>
+          <input
+            type="radio"
+            class="menu__level-radio"
+            id="medium-level"
+            name="level"
+            value="3"
+            checked
+          />
+          <label for="medium-level" class="menu__level">Medium</label>
+          <input
+            type="radio"
+            class="menu__level-radio"
+            id="hard-level"
+            name="level"
+            value="5"
+          />
+          <label for="hard-level" class="menu__level">Fast</label>
+        </div>
+        <div class="menu__field-group menu__field-group--size">
+          <h2 class="menu__field-group-title">Space size</h2>
+          <input
+            type="radio"
+            class="menu__size-radio"
+            id="small"
+            name="size"
+            value="16"
+          />
+          <label for="small" class="menu__size">Small</label>
+          <input
+            type="radio"
+            class="menu__size-radio"
+            id="medium"
+            name="size"
+            value="32"
+            checked
+          />
+          <label for="medium" class="menu__size">Medium</label>
+          <input
+            type="radio"
+            class="menu__size-radio"
+            id="large"
+            name="size"
+            value="64"
+          />
+          <label for="large" class="menu__size">Large</label>
+        </div>
+
+        <div class="menu__field-group menu__field-group--food">
+          <h2 class="menu__field-group-title">Amount of stars on the board</h2>
+          <input
+            type="number"
+            min="1"
+            max="5"
+            class="menu__food"
+            id="food"
+            name="foods"
+            value="1"
+          />
+        </div>
+        <input type="submit" class="menu__button" value="Play" />
+      </form>
+    </aside>
+    <script defer src="./app/index.js"></script>
+  </body>
+</html>
